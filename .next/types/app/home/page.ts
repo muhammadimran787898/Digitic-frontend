@@ -1,4 +1,4 @@
-// File: E:\FULLSTACK\FoodDelivery app\Forntend\src\app\home\page.tsx
+// File: E:\FULLSTACK\Ecomm app\Forntend\src\app\home\page.tsx
 import * as entry from '../../../../src/app/home/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
