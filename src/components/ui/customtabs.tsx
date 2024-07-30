@@ -1,28 +1,28 @@
-import React from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import Link from 'next/link'
-import { cn } from '@/src/lib/utils'
-import { useId } from 'react'
+import React from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { useId } from "react";
 
 interface Tab {
-  label: string
-  value: string
-  link: string
+  label: string;
+  value: string;
+  link: string;
 }
 type Tabsprops = {
-  tabValues: Tab[]
-  active: string
-  outerClassName?: string
-  activeTabClassName?: string
-  motionClassName?: string
-  isRoute: boolean
-  onClick: (value: string) => void
-}
+  tabValues: Tab[];
+  active: string;
+  outerClassName?: string;
+  activeTabClassName?: string;
+  motionClassName?: string;
+  isRoute: boolean;
+  onClick: (value: string) => void;
+};
 
 export interface TabProps {
-  className?: string
-  asChild?: boolean
+  className?: string;
+  asChild?: boolean;
 }
 
 const CustomTabs = React.forwardRef<HTMLDivElement, Tabsprops>(
@@ -33,15 +33,15 @@ const CustomTabs = React.forwardRef<HTMLDivElement, Tabsprops>(
     activeTabClassName,
     tabValues,
     active,
-    onClick
+    onClick,
   }) => {
-    const id = useId()
+    const id = useId();
 
     return (
       <Tabs>
         <TabsList
           className={cn(
-            ' w-fit rounded-md bg-white-dark h-fit  p-1 m-0 relative my-4',
+            " w-fit rounded-md bg-white-dark h-fit  p-1 m-0 relative my-4",
             outerClassName
           )}
         >
@@ -52,17 +52,17 @@ const CustomTabs = React.forwardRef<HTMLDivElement, Tabsprops>(
                   value={tab.value}
                   id={id}
                   className={cn(
-                    'relative p-0 flex justify-center items-center h-10 w-24 m-0',
+                    "relative p-0 flex justify-center items-center h-10 w-24 m-0",
                     activeTabClassName
                   )}
                   onClick={() => onClick(tab.value)}
                 >
-                  {' '}
+                  {" "}
                   <AnimatePresence>
                     {active === tab.value ? (
                       <motion.div
                         className={cn(
-                          'underline w-full absolute inset-0 text-xs font-medium bg-white rounded-md',
+                          "underline w-full absolute inset-0 text-xs font-medium bg-white rounded-md",
                           motionClassName
                         )}
                         layoutId={id}
@@ -70,9 +70,9 @@ const CustomTabs = React.forwardRef<HTMLDivElement, Tabsprops>(
                     ) : null}
                   </AnimatePresence>
                   <span
-                    className={cn('z-10  flex justify-center mx-auto text-xs', {
-                      'text-primary font-semibold': active === tab.value,
-                      'text-secondary-dark font-medium': active !== tab.value
+                    className={cn("z-10  flex justify-center mx-auto text-xs", {
+                      "text-primary font-semibold": active === tab.value,
+                      "text-secondary-dark font-medium": active !== tab.value,
                     })}
                   >
                     {tab.label}
@@ -83,20 +83,20 @@ const CustomTabs = React.forwardRef<HTMLDivElement, Tabsprops>(
           ))}
         </TabsList>
       </Tabs>
-    )
+    );
   }
-)
+);
 
-export default CustomTabs
+export default CustomTabs;
 
 const LinkWrapper = ({
   isRoute,
   children,
-  link
+  link,
 }: {
-  isRoute: boolean
-  children: JSX.Element
-  link: string
+  isRoute: boolean;
+  children: JSX.Element;
+  link: string;
 }) => {
   return isRoute ? (
     <Link href={link} className="w-full">
@@ -104,5 +104,5 @@ const LinkWrapper = ({
     </Link>
   ) : (
     <>{children}</>
-  )
-}
+  );
+};
