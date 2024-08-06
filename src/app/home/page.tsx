@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import React, { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Progress } from "@/components/ui/progress";
 import {
   EffectCoverflow,
   Autoplay,
@@ -29,7 +30,10 @@ import {
   productdata,
   sliderdata,
   swipersidedata,
+  Specialproducts,
 } from "./(components)/constants";
+import { Input } from "@/components/ui/input";
+import Blog from "../blog/page";
 
 function classNameNames(...classNamees: any) {
   return classNamees.filter(Boolean).join(" ");
@@ -195,13 +199,13 @@ export default function home() {
           ))}
         </div>
         <div className="py-8 px-8">
-          <div className="grid grid-cols-4 rounded-md  bg-white ">
+          <div className="grid grid-cols-5 p-6 rounded-md  bg-white ">
             {productdata.map((d, i) => (
               <>
                 <div
                   className={`flex items-center  border-slate-100  p-6  ${
-                    (i + 1) % 4 == 0 ? " border-0" : "border-r-2"
-                  } ${i < 4 ? "border-b-2" : "border-0"}  `}
+                    (i + 1) % 5 == 0 ? " border-0" : "border-r-2"
+                  } ${i < 5 ? "border-b-2" : "border-0"}  `}
                 >
                   <div className="flex flex-col w-full  !rounded-md  justify-start mx-1 px-1 ">
                     <p className="font-semibold text-base text-black">
@@ -242,7 +246,7 @@ export default function home() {
                   className="group relative  border border-gray-200  shadow-md shadow-gray-200 rounded-md bg-white sm:p-2"
                 >
                   <div className="flex justify-between  ">
-                    <span className="bg-orange-400 text-black text-xs font-xs px-1 rounded-full text-center">
+                    <span className="bg-orange-400 text-black text-xs  w-10 h-4 font-xs px-1 rounded-full text-center">
                       -30%
                     </span>
                     <Heart className="w-4 h-4" />
@@ -336,61 +340,93 @@ export default function home() {
               <p className="flex justify-start  items-start text-xl  font-semibold text-black">
                 Special Products
               </p>
-              <div className="flex mx-2 ">
+              <div className="flex mx-2">
                 <Left className=" text-slate-500 w-6 h-6 " />
                 <Right className="  text-slate-500 w-6 h-6  " />
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-4 my-4 sm:mx-0 md:grid-cols-3 lg:grid-cols-3">
-              <div className="bg-white rounded-lg shadow-lg p-4 max-w-sm">
-                <div className="relative">
-                  <div className="absolute top-2 left-2 bg-yellow-500 text-white text-xs rounded-full px-2 py-1">
-                    -20%
-                  </div>
-                  <img
-                    src="path/to/your/image.png"
-                    alt="Samsung Galaxy Note10+"
-                    className="w-full rounded-t-lg"
-                  />
-                </div>
-                <div className="mt-4">
-                  <div className="text-xs text-gray-500">Havells</div>
-                  <div className="font-semibold text-sm">
-                    Samsung Galaxy Note10+ Mobile Phone; Sim...
-                  </div>
-                  <div className="flex items-center mt-1">
-                    <div className="text-yellow-400 text-sm">★★★★★</div>
-                  </div>
-                  <div className="mt-2 flex items-center">
-                    <span className="text-red-600 font-bold text-lg">
-                      $60.00
-                    </span>
-                    <span className="text-gray-500 line-through ml-2">
-                      $75.00
-                    </span>
-                  </div>
-                  <div className="flex items-center mt-2">
-                    <div className="text-gray-500 text-xs">742 Days</div>
-                    <div className="flex ml-2 items-center text-red-600 text-xs">
-                      <div className="bg-gray-100 rounded px-1">13</div>
-                      <div className="px-1">:</div>
-                      <div className="bg-gray-100 rounded px-1">00</div>
-                      <div className="px-1">:</div>
-                      <div className="bg-gray-100 rounded px-1">38</div>
+            <div className="grid grid-cols-1 gap-4 my-4 md:grid-cols-3 lg:grid-cols-3">
+              {Specialproducts.map((product) => (
+                <>
+                  <div className=" rounded-lg border bg-white shadow-md p-4">
+                    <div className="flex w-full justify-between   ">
+                      <span className="bg-orange-400 w-10 h-4 text-black text-xs font-xs px-1 rounded-full text-center">
+                        {product.discount}
+                      </span>
+                      <Heart className="w-4 h-4" />
+                    </div>
+                    <div className="flex justify-between  my-2">
+                      <div className="flex flex-col items-center">
+                        <Image
+                          src={product.src}
+                          alt="uuu"
+                          width="100"
+                          height="100"
+                          className="w-18 h-18  mx-auto  object-contain"
+                        />
+                        <div className="flex justify-center  my-4  items-center  ">
+                          <Image
+                            src={product.src}
+                            alt="uuu"
+                            width="100"
+                            height="100"
+                            className="w-10 h-10  border mx-4  object-contain"
+                          />
+                          <Image
+                            src={product.src}
+                            alt="uuu"
+                            width="100"
+                            height="100"
+                            className="w-10 h-10 border mx-4 object-contain"
+                          />
+                        </div>
+                        <div className="flex  ">
+                          <Left className=" text-slate-500 w-6 h-6 " />
+                          <Right className="  text-slate-500 w-6 h-6  " />
+                        </div>
+                      </div>
+
+                      <div className="ml-4">
+                        <div className="text-xs text-gray-500">
+                          {product.brand}
+                        </div>
+                        <div className="font-semibold text-sm">
+                          {product.description}
+                        </div>
+                        <div className="flex items-center mt-1">
+                          <div className="text-yellow-400 text-sm">★★★★★</div>
+                        </div>
+                        <div className="mt-2 flex items-center">
+                          <span className="text-red-600 font-bold text-lg">
+                            {product.currentPrice}
+                          </span>
+                          <span className="text-gray-500 line-through ml-2">
+                            {product.originalPrice}
+                          </span>
+                        </div>
+                        <div className="flex items-center mt-2">
+                          <div className="text-gray-500 text-xs">742 Days</div>
+                          <div className="flex ml-2 items-center text-red-600 text-xs">
+                            <div className="bg-gray-100 rounded px-1">13</div>
+                            <div className="px-1">:</div>
+                            <div className="bg-gray-100 rounded px-1">00</div>
+                            <div className="px-1">:</div>
+                            <div className="bg-gray-100 rounded px-1">38</div>
+                          </div>
+                        </div>
+                        <div className="text-gray-500 text-xs mt-2">
+                          {product.productsLeft}
+                        </div>
+
+                        <Progress value={10} className="w-full h-2" />
+                        <Button className="mt-4 w-auto px-4 bg-slate-800  text-white rounded-full py-1">
+                          OPTION
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                  <div className="text-gray-500 text-xs mt-2">Products: 5</div>
-                  <div className="w-full bg-gray-200 rounded-full h-1 mt-1">
-                    <div
-                      className="bg-green-500 h-1 rounded-full"
-                      style={{ width: "50%" }}
-                    ></div>
-                  </div>
-                  <button className="mt-4 w-full bg-black text-white rounded-full py-2">
-                    OPTION
-                  </button>
-                </div>
-              </div>
+                </>
+              ))}
             </div>
           </div>
         </div>
@@ -400,7 +436,7 @@ export default function home() {
           <div className="w-full overflow-hidden sm:px-4 ">
             <div className="flex justify-between">
               <p className="flex justify-start  items-start text-xl  font-semibold text-black">
-                Oue Popular Products
+                Our Popular Products
               </p>
               <div className="flex mx-2 ">
                 <Left className=" text-slate-500 w-6 h-6 " />
@@ -408,7 +444,7 @@ export default function home() {
               </div>
             </div>
             <div className="grid grid-cols-1 gap-4 my-4 sm:mx-0 md:grid-cols-3 lg:grid-cols-6">
-              <div className="bg-white rounded-lg shadow-lg p-4 max-w-sm">
+              <div className="bg-white rounded-lg shadow-md p-4 max-w-sm">
                 <div className="relative">
                   <div className="absolute top-2 left-2 bg-yellow-500 text-white text-xs rounded-full px-2 py-1">
                     -20%
@@ -446,13 +482,8 @@ export default function home() {
                     </div>
                   </div>
                   <div className="text-gray-500 text-xs mt-2">Products: 5</div>
-                  <div className="w-full bg-gray-200 rounded-full h-1 mt-1">
-                    <div
-                      className="bg-green-500 h-1 rounded-full"
-                      style={{ width: "50%" }}
-                    ></div>
-                  </div>
-                  <button className="mt-4 w-full bg-black text-white rounded-full py-2">
+
+                  <button className="mt-4 w-full bg-slate-800  text-white rounded-full py-2">
                     OPTION
                   </button>
                 </div>
@@ -502,6 +533,9 @@ export default function home() {
             </div>
           </div>
         </div>
+        {/* /////////////////////////////////////blo................///////////////////////// */}
+        <div className="grid grid-rows-1 gap-4 px-4   mx-8  rounded-md  py-8  bg-slate-  "></div>
+        <Blog />
       </div>
     </div>
   );

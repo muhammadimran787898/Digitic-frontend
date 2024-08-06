@@ -17,12 +17,6 @@ export const sliderdata = [
     description: "From $1099.00 or $45.79/mo.",
     image: "/images/4.jpg",
   },
-  {
-    text: "Style and speed in a sleek design.",
-    title: "Surface Laptop 4",
-    description: "From $999.00 or $41.62/mo.",
-    image: "/images/5.jpg",
-  },
 
   {
     text: "The smartest and fastest Pixel yet.",
@@ -224,6 +218,12 @@ export const productdata = [
 
     imageSrc: "/products/headphone.webp",
   },
+  {
+    name: "Mobile & Tablet ",
+
+    items: 38,
+    imageSrc: "/products/tab.webp",
+  },
 
   {
     name: "Laptop",
@@ -261,6 +261,13 @@ export const productdata = [
     imageSrc: "/products/speaker.webp",
     reviewCount: 21,
   },
+  {
+    name: "Smart Watches",
+
+    items: 21,
+
+    imageSrc: "/products/watch.jpg",
+  },
 ];
 
 export const swipersidedata = [
@@ -293,5 +300,110 @@ export const swipersidedata = [
     description: "Up to 40% off",
     image: "/images/side6.jpg",
     price: "$41.62/mo.",
+  },
+];
+
+export const Specialproducts = [
+  {
+    discount: "-30%",
+    favorite: true,
+    brand: "Havells",
+    src: "/products/tab.webp",
+    description: "Samsung Galaxy Note10+ Mobile Phone; Sim...",
+    rating: "★★★★★",
+    currentPrice: "$60.00",
+    originalPrice: "$75.00",
+    daysLeft: "742 Days",
+    countdown: {
+      hours: "13",
+      minutes: "00",
+      seconds: "38",
+    },
+    productsLeft: 5,
+  },
+  {
+    discount: "-15%",
+    favorite: false,
+    brand: "Sony",
+    src: "/products/headphone.webp",
+    description: "Sony WH-1000XM4 Wireless Noise Cancelling Headphones",
+    rating: "★★★★☆",
+    currentPrice: "$299.00",
+    originalPrice: "$350.00",
+    daysLeft: "300 Days",
+    countdown: {
+      hours: "10",
+      minutes: "20",
+      seconds: "15",
+    },
+    productsLeft: 10,
+  },
+  {
+    discount: "-20%",
+    favorite: true,
+    brand: "Apple",
+    src: "/products/mac.webp",
+    description: "Apple MacBook Pro 13-inch, 2020, 8GB RAM, 256GB SSD",
+    rating: "★★★★☆",
+    currentPrice: "$1200.00",
+    originalPrice: "$1500.00",
+    daysLeft: "200 Days",
+    countdown: {
+      hours: "09",
+      minutes: "30",
+      seconds: "45",
+    },
+    productsLeft: 8,
+  },
+  {
+    discount: "-25%",
+    favorite: false,
+    brand: "Dell",
+    src: "/products/game.webp",
+    description: "Dell XPS 15 9500, 15.6-inch FHD+, Intel i7, 16GB RAM",
+    rating: "★★★★★",
+    currentPrice: "$1400.00",
+    originalPrice: "$1800.00",
+    daysLeft: "150 Days",
+    countdown: {
+      hours: "08",
+      minutes: "45",
+      seconds: "50",
+    },
+    productsLeft: 3,
+  },
+  {
+    discount: "-10%",
+    favorite: true,
+    brand: "Bose",
+    src: "/products/watch.jpg",
+    description: "Bose QuietComfort 35 II Wireless Bluetooth Headphones",
+    rating: "★★★★☆",
+    currentPrice: "$250.00",
+    originalPrice: "$280.00",
+    daysLeft: "100 Days",
+    countdown: {
+      hours: "11",
+      minutes: "55",
+      seconds: "20",
+    },
+    productsLeft: 6,
+  },
+  {
+    discount: "-35%",
+    favorite: false,
+    brand: "Samsung",
+    src: "/products/speaker.webp",
+    description: "Samsung 65-inch Class QLED Q80T Series - 4K UHD Smart TV",
+    rating: "★★★★★",
+    currentPrice: "$1300.00",
+    originalPrice: "$2000.00",
+    daysLeft: "90 Days",
+    countdown: {
+      hours: "12",
+      minutes: "15",
+      seconds: "10",
+    },
+    productsLeft: 2,
   },
 ];

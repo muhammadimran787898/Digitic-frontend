@@ -3,6 +3,7 @@ import React, { Fragment } from "react";
 import Image from "next/image";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
+
 import {
   Search,
   Compare,
@@ -17,7 +18,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@radix-ui/react-accordion";
-import Link from "next/link";
 
 import {
   NavigationMenu,
@@ -37,70 +37,75 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const list = [
   {
     title: "Favorite",
     name: "Wishlist",
     icon: <Whishlist className="w-8 h-8 -mt-1" />,
+    href: "/wishlist",
   },
   {
     title: "Compare",
     name: "Product",
     icon: <Compare />,
+    href: "/compareProduct",
   },
   {
     title: "Login",
     name: "My Account",
     icon: <User />,
+    href: "/auth/login",
   },
 ];
 
 const nav = [
-  { name: "HOME", href: "/" },
-  { name: "OUR STORE", href: "/" },
-  { name: "ABOUT", href: "/" },
-  { name: "BLOG", href: "/" },
-  { name: "CONTACT", href: "/" },
+  { name: "HOME", href: "/home" },
+  { name: "OUR STORE", href: "/store" },
+  // { name: "ABOUT", href: "/about" },
+  { name: "BLOG", href: "/blog" },
+  { name: "CONTACT", href: "/contact" },
 ];
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-];
+// const components: { title: string; href: string; description: string }[] = [
+//   {
+//     title: "Alert Dialog",
+//     href: "/docs/primitives/alert-dialog",
+//     description:
+//       "A modal dialog that interrupts the user with important content and expects a response.",
+//   },
+//   {
+//     title: "Hover Card",
+//     href: "/docs/primitives/hover-card",
+//     description:
+//       "For sighted users to preview content available behind a link.",
+//   },
+//   {
+//     title: "Progress",
+//     href: "/docs/primitives/progress",
+//     description:
+//       "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+//   },
+//   {
+//     title: "Scroll-area",
+//     href: "/docs/primitives/scroll-area",
+//     description: "Visually or semantically separates content.",
+//   },
+//   {
+//     title: "Tabs",
+//     href: "/docs/primitives/tabs",
+//     description:
+//       "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+//   },
+//   {
+//     title: "Tooltip",
+//     href: "/docs/primitives/tooltip",
+//     description:
+//       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+//   },
+// ];
 
 const languages = [
   "English",
@@ -201,17 +206,19 @@ export default function Header() {
           </div>
 
           <div className="flex justify-end gap-x-4 ">
-            {list.map((item) => (
+            {list.map((item: any, index: any) => (
               <>
-                <div className="flex justify-between text-white ">
-                  <p className="mt-1">{item.icon}</p>
-                  <div className="flex flex-col justify-start  mx-1 px-1 ">
-                    <span className=" text-xs text-white">{item.title}</span>
-                    <span className="pr-1 mt-1 text-center  text-xs text-white">
-                      {item.name}
-                    </span>
+                <Link href={item?.href}>
+                  <div className="flex justify-between text-white group">
+                    <p className="mt-1">{item.icon}</p>
+                    <div className="flex flex-col justify-start  mx-1 px-1 ">
+                      <span className=" text-xs text-white">{item.title}</span>
+                      <span className="pr-1 mt-1 text-center  text-xs text-white">
+                        {item.name}
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </>
             ))}
 
