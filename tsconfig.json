@@ -30,7 +30,10 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/auth/login/page.js"
+    "src/app/auth/login/page.js",
+    "src/app/cart/page.tsx",
+    "src/app/store/page.jsx",
+    "src/app/home/page.jsx"
   ],
   "exclude": ["node_modules"]
 }

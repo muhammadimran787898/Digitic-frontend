@@ -4,23 +4,25 @@ import Image from "next/image";
 
 const navigation = {
   solutions: [
-    { name: "Marketing", href: "#" },
-    { name: "Analytics", href: "#" },
-    { name: "Commerce", href: "#" },
-    { name: "Insights", href: "#" },
+    { name: "Information", href: "#" },
+    { name: "Privacy", href: "#" },
+    { name: "Refund", href: "#" },
+    { name: "Shipping", href: "#" },
+    { name: "Services", href: "#" },
   ],
   support: [
-    { name: "Pricing", href: "#" },
-    { name: "Documentation", href: "#" },
-    { name: "Guides", href: "#" },
-    { name: "API Status", href: "#" },
+    { name: " About Us", href: "#" },
+    { name: "Contact", href: "#" },
+    { name: "FAQs", href: "#" },
+    { name: "Compare", href: "#" },
+    { name: "Wishlist", href: "#" },
   ],
   company: [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Jobs", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Partners", href: "#" },
+    { name: "Our Store", href: "#" },
+    { name: "Appliances", href: "#" },
+    { name: "Speakers", href: "#" },
+    { name: "Wastches  ", href: "#" },
+    { name: "Laptops", href: "#" },
   ],
   legal: [
     { name: "Claim", href: "#" },
@@ -103,12 +105,15 @@ export default function Footer() {
       </h2> */}
       <div className="w-full  sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          <div className="space-y-8 xl:col-span-1">
-            <p>DIGITEC.</p>
-            <p className=" text-base">
+          <div className="space-y-2 xl:col-span-1">
+            <p className="font-bold text-xl">Contact Info</p>
+            <p className=" text-base text-orange-300 line-clamp-1">
               Making the world a better place through constructing elegant
               hierarchies.
             </p>
+            <p>99 New Theme St. XY, USA 12345, Beside the Sun point land.</p>
+            <p>+00 123-456-789</p>
+            <p>demo@example.com</p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
                 <a key={item.name} href={item.href} className=" hover:">
@@ -121,15 +126,15 @@ export default function Footer() {
           <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold  tracking-wider uppercase">
-                  Solutions
+                <h3 className="text-normal font-semibold  tracking-wider uppercase">
+                  Store Policy
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.solutions.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-base  hover:text-slate-500"
+                        className="text-base  hover:text-orange-300"
                       >
                         {item.name}
                       </a>
@@ -138,15 +143,15 @@ export default function Footer() {
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
-                <h3 className="text-sm font-semibold  tracking-wider uppercase">
-                  Support
+                <h3 className="text-normal font-semibold  tracking-wider ppercase">
+                  Quick links
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.support.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-base  hover:text-slate-500"
+                        className="text-base  hover:text-orange-300"
                       >
                         {item.name}
                       </a>
@@ -158,14 +163,14 @@ export default function Footer() {
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <h3 className="text-sm font-semibold  tracking-wider uppercase">
-                  Company
+                  Collection
                 </h3>
                 <ul role="list" className="mt-4 space-y-4">
                   {navigation.company.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}
-                        className="text-base  hover:text-slate-500"
+                        className="text-base  hover:text-orange-300"
                       >
                         {item.name}
                       </a>
@@ -173,22 +178,28 @@ export default function Footer() {
                   ))}
                 </ul>
               </div>
-              <div className="mt-12 md:mt-0">
+              <div className="space-y-2 xl:col-span-1">
                 <h3 className="text-sm font-semibold  tracking-wider uppercase">
-                  Legal
+                  Our App
                 </h3>
-                <ul role="list" className="mt-4 space-y-4">
-                  {navigation.legal.map((item) => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="text-base  hover:text-slate-500"
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <p className=" text-base text-orange-300 line-clamp-3">
+                  Download our Apps and get extra 15% Discount on your first
+                  Order…!
+                </p>
+                <div className="flex gap-2">
+                  <Image
+                    src="/products/button1.webp"
+                    alt="Workflow"
+                    width={100}
+                    height={100}
+                  />
+                  <Image
+                    src="/products/button2.webp"
+                    alt="Workflow"
+                    width={100}
+                    height={100}
+                  />
+                </div>
               </div>
             </div>
           </div>

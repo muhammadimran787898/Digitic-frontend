@@ -16,3 +16,6 @@ export { default as Right } from "../svg/home/rightch.svg";
 export { default as Top } from "../svg/home/topch.svg";
 export { default as Heart } from "../svg/home/heart.svg";
 export { default as Scroll } from "../svg/home/scroll.svg";
+export { default as Star } from "../svg/cart/star.svg";
+export { default as Circle } from "../svg/circle.svg";
+export { default as Check } from "../svg/check.svg";

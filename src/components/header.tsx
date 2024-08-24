@@ -3,6 +3,7 @@ import React, { Fragment } from "react";
 import Image from "next/image";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
+import { Label } from "@/components/ui/label";
 
 import {
   Search,
@@ -39,6 +40,18 @@ import {
 } from "@/components/ui/select";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
+import { Button } from "@/components/ui/button";
 
 const list = [
   {
@@ -136,18 +149,22 @@ const currencies = [
 export default function Header() {
   return (
     <div className="sticky top-0 z-50 cursor-pointer">
-      <nav className="bg-gray-800">
-        <div className="h-8 w-full ">
+      <nav className="bg-[#151C25]">
+        <div className="h-12 py-2 w-full ">
           <div className="flex justify-between mx-auto pt-2  sm:px-6 lg:px-8">
             <div>
-              <p className="text-white text-xs">
+              <p className="text-white text-xs ">
                 Free Shiping Over $100 & Free Returns
               </p>
             </div>
             <div className="flex text-white text-xs gap-4">
               <div className="flex">
                 <p>HotLine:(880) 176 111 111 </p>
-                <div className="h-4 w-[2px] bg-slate-600 mx-3 mt-"></div>
+
+                <Separator
+                  orientation="vertical"
+                  className="w-[1px] h-4 mt-[1px]  mx-3  bg-slate-400"
+                />
               </div>
               <p>Mon-Fri: 9:00 - 18:00</p>
               <div className="flex ">
@@ -187,53 +204,124 @@ export default function Header() {
           </div>
         </div>
         <Separator className="w-full bg-slate-600" />
-        <div className="grid grid-cols-3 gap-2 space-y-4 h-16 px-7 relytive">
+
+        <div className="flex justify-between py-6  h-auto px-7">
           <div>
-            <h1 className="mt-4 text-white font-semibold text-2xl">DIGITEC.</h1>
+            <Image
+              src="/logo.webp"
+              alt="me"
+              width={150}
+              height={100}
+              className="w-auto h-full"
+            />
           </div>
 
-          <div className="max-w-6xl flex">
+          <div className="flex">
             <Input
               variant="destructive"
               type="search"
-              className="w-full h-8 !rounded-r-none m-0 text-xs "
-              placeholder="Search Product Here ...  "
+              className="w-[750px] h-9 !rounded-r-none m-0 text-lg font-normal"
+              placeholder="Search  "
               sizes="lg"
             />
-            <div className="bg-orange-300 w-8 h-8 rounded-r-md">
+            <div className="bg-orange-300 w-8 h-9 rounded-r-md">
               <Search className="w-4 h-4 flex justify-center my-2 mx-auto " />
             </div>
           </div>
 
-          <div className="flex justify-end gap-x-4 ">
+          <div className="flex justify-end gap-6 mx-4">
             {list.map((item: any, index: any) => (
               <>
-                <Link href={item?.href}>
-                  <div className="flex justify-between text-white group">
-                    <p className="mt-1">{item.icon}</p>
-                    <div className="flex flex-col justify-start  mx-1 px-1 ">
-                      <span className=" text-xs text-white">{item.title}</span>
-                      <span className="pr-1 mt-1 text-center  text-xs text-white">
-                        {item.name}
-                      </span>
+                <div key={index} className="relative group">
+                  <Link href={item?.href}>
+                    <div className="flex justify-between text-white group">
+                      <p className="mt-1   ">{item.icon}</p>
+                      <div className="flex flex-col justify-start px-1 font-normal text-sm ">
+                        <span className="  text-white">{item.title}</span>
+                        <span className="pr-1 mt-1 text-center  text-white">
+                          {item.name}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                  {index === 2 && (
+                    <>
+                      <div className="absolute left-0 w-full origin-top-left bg-white border border-gray-200 rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div
+                          className="py-1"
+                          role="menu"
+                          aria-orientation="vertical"
+                        >
+                          <a
+                            href="/auth/login"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-300"
+                            role="menuitem"
+                          >
+                            Login
+                          </a>
+                          <a
+                            href="/auth/register"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-300"
+                            role="menuitem"
+                          >
+                            Register
+                          </a>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
               </>
             ))}
 
             <div>
-              <div className="flex  text-white">
-                <Basket className="text-orange-300" />
-                <div className="flex flex-col ">
-                  <span className="px-1 mx-auto text-xs bg-white text-black w-4 h-4 rounded-full">
-                    1
-                  </span>
-                  <span className="px-1 mt-1 text-center  text-xs text-white">
-                    $ 100
-                  </span>
-                </div>
-              </div>
+              <Sheet>
+                <SheetTrigger asChild>
+                  <div className="flex text-white">
+                    <Basket className="text-orange-300" />
+                    <div className="flex flex-col ">
+                      <span className="px-1 mx-auto text-xs bg-white text-black w-4 h-4 rounded-full">
+                        1
+                      </span>
+                      <span className="px-1 mt-1 text-center  text-xs text-white">
+                        $ 100
+                      </span>
+                    </div>
+                  </div>
+                </SheetTrigger>
+                <SheetContent>
+                  <SheetHeader>
+                    <SheetTitle>Edit profile</SheetTitle>
+                    <SheetDescription>
+                      Make changes to your profile here. Click save when you re
+                      done.
+                    </SheetDescription>
+                  </SheetHeader>
+                  <div className="grid gap-4 py-4">
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <Label className="text-right">Name</Label>
+                      <Input
+                        id="name"
+                        value="Pedro Duarte"
+                        className="col-span-3"
+                      />
+                    </div>
+                    <div className="grid grid-cols-4 items-center gap-4">
+                      <Label className="text-right">Username</Label>
+                      <Input
+                        id="username"
+                        value="@peduarte"
+                        className="col-span-3"
+                      />
+                    </div>
+                  </div>
+                  <SheetFooter>
+                    <SheetClose asChild>
+                      <Button type="submit">Save changes</Button>
+                    </SheetClose>
+                  </SheetFooter>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </div>
@@ -273,14 +361,18 @@ export default function Header() {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-            <div className="border-l-2 h-4 mt-1 border-slate-600"></div>
-            <div className=" flex items-center -mt-2 justify-between flex-wrap md:flex-nowrap">
-              <div className="text-white w-full md:w-auto md:order-2">
-                <ul className="flex font-light text-xs justify-between">
+            {/* <div className="border-l-2 h-4 mt-1 border-slate-600"></div> */}
+            <Separator
+              orientation="vertical"
+              className="w-[1px] h-5 mt-1  bg-slate-400"
+            />
+            <div className="flex items-center -mt-2 justify-between flex-wrap md:flex-nowrap">
+              <div className="text-white w-full">
+                <ul className="flex font-medium text-sm justify-between ">
                   {nav.map((item) => (
                     <>
-                      <li className="md:px-4 md:py-2 hover:text-neutral-500">
-                        <a href={item.href}>{item.name}</a>
+                      <li className="md:px-4 md:py-2">
+                        <Link href={item.href}>{item.name}</Link>
                       </li>
                     </>
                   ))}

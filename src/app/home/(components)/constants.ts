@@ -102,7 +102,7 @@ export const featuredCollection = [
     price: "$149",
     rating: 5,
     reviewCount: 38,
-    imageSrc: "/products/phon.png",
+    imageSrc: "/products/headphone.webp",
     imageAlt: "TODO",
     href: "#",
   },
@@ -112,49 +112,111 @@ export const featuredCollection = [
     price: "$15",
     rating: 5,
     reviewCount: 18,
-    imageSrc: "/products/computer.png",
+    imageSrc: "/products/gaming.webp",
+    imageAlt: "TODO",
+    href: "#",
+  },
+
+  {
+    id: 3,
+    name: "Organize Phone Holder",
+    price: "$15",
+    rating: 4,
+    reviewCount: 21,
+    imageSrc: "/products/cattle.webp",
     imageAlt: "TODO",
     href: "#",
   },
 
   {
     id: 4,
-    name: "Organize Phone Holder",
-    price: "$15",
-    rating: 4,
-    reviewCount: 21,
-    imageSrc: "/products/headphone.png",
-    imageAlt: "TODO",
-    href: "#",
-  },
-
-  {
-    id: 2,
     name: "Organize Pen Holder",
     price: "$15",
     rating: 5,
     reviewCount: 18,
-    imageSrc: "/products/laptop.png",
+    imageSrc: "/products/tab.webp",
     imageAlt: "TODO",
     href: "#",
   },
   {
-    id: 3,
+    id: 5,
     name: "Organize Sticky Note Holder",
     price: "$15",
     rating: 5,
     reviewCount: 14,
-    imageSrc: "/products/mouse.png",
+    imageSrc: "/products/usb.webp",
     imageAlt: "TODO",
     href: "#",
   },
   {
-    id: 4,
+    id: 6,
     name: "Organize Phone Holder",
     price: "$15",
     rating: 4,
     reviewCount: 21,
-    imageSrc: "/products/mi.png",
+    imageSrc: "/products/fc1.webp",
+    imageAlt: "TODO",
+    href: "#",
+  },
+  {
+    id: 7,
+    name: "Organize Basic Set (Walnut)",
+    price: "$149",
+    rating: 5,
+    reviewCount: 38,
+    imageSrc: "/products/fc5.webp",
+    imageAlt: "TODO",
+    href: "#",
+  },
+  {
+    id: 8,
+    name: "Organize Pen Holder",
+    price: "$15",
+    rating: 5,
+    reviewCount: 18,
+    imageSrc: "/products/mouse.webp",
+    imageAlt: "TODO",
+    href: "#",
+  },
+
+  {
+    id: 9,
+    name: "Organize Phone Holder",
+    price: "$15",
+    rating: 4,
+    reviewCount: 21,
+    imageSrc: "/products/sp1.webp",
+    imageAlt: "TODO",
+    href: "#",
+  },
+
+  {
+    id: 10,
+    name: "Organize Pen Holder",
+    price: "$15",
+    rating: 5,
+    reviewCount: 18,
+    imageSrc: "/products/sp5.webp",
+    imageAlt: "TODO",
+    href: "#",
+  },
+  {
+    id: 11,
+    name: "Organize Sticky Note Holder",
+    price: "$15",
+    rating: 5,
+    reviewCount: 14,
+    imageSrc: "/products/sp3.webp",
+    imageAlt: "TODO",
+    href: "#",
+  },
+  {
+    id: 12,
+    name: "Organize Phone Holder",
+    price: "$15",
+    rating: 4,
+    reviewCount: 21,
+    imageSrc: "/products/sp9.webp",
     imageAlt: "TODO",
     href: "#",
   },
@@ -165,14 +227,14 @@ export const Belowfeaturedproductdata = [
     name: "Big Screen ",
     des: "smart watch serires 7",
     price: "from $349.00 or $14.54/mo.",
-    imageSrc: "/products/phon.png",
+    imageSrc: "/products/bg1.webp",
     imageAlt: "TODO",
   },
   {
     name: "Organize Pen Holder",
     des: "smart watch serires 7",
     price: "from $349.00 or $14.54/mo.",
-    imageSrc: "/products/computer.png",
+    imageSrc: "/products/bg2.webp",
     imageAlt: "TODO",
   },
 
@@ -181,7 +243,7 @@ export const Belowfeaturedproductdata = [
     des: "smart watch serires 7",
 
     price: "from $349.00 or $14.54/mo.",
-    imageSrc: "/products/headphone.png",
+    imageSrc: "/products/bg3.webp",
     imageAlt: "TODO",
   },
 
@@ -191,7 +253,7 @@ export const Belowfeaturedproductdata = [
 
     price: "from $349.00 or $14.54/mo.",
 
-    imageSrc: "/products/laptop.png",
+    imageSrc: "/products/bg4.webp",
     imageAlt: "TODO",
   },
 ];
@@ -270,57 +332,64 @@ export const productdata = [
   },
 ];
 
+export const logoIMage = [
+  {
+    imagesrc: "/products/logo1.webp",
+  },
+  {
+    imagesrc: "/products/logo2.webp",
+  },
+  {
+    imagesrc: "/products/logo3.webp",
+  },
+  {
+    imagesrc: "/products/logo4.avif",
+  },
+  {
+    imagesrc: "/products/logo5.webp",
+  },
+  {
+    imagesrc: "/products/logo6.webp",
+  },
+  {
+    imagesrc: "/products/logo7.webp",
+  },
+];
+
 export const swipersidedata = [
   {
-    text: "New Arrival",
-    title: "Buy iPhone 13",
-    description: "Up to 20% off",
-    image: "/images/side.jpg",
+    text: "Best Sale",
+    title: "Buy iPad Air",
+    description: "From $1699.00 or",
+    image: "/images/side1.webp",
     price: "$41.62/mo.",
   },
 
   {
-    text: "Best Sale",
+    text: "New Arrival",
     title: "Buy iPad Air",
-    description: "Up to 10% off",
-    image: "/images/side1.jpg",
+    description: "From $599 or",
+    image: "/images/side2.jpg",
 
+    price: "$49.91/mo. for 12 mo",
+  },
+  {
+    text: "Life Spirit",
+    title: "Smartwatch 7",
+    description: "Up to 40% off",
+    image: "/images/side3.jpg",
     price: "$41.62/mo.",
   },
   {
     text: "Free Engraving",
-    title: "Laptop Max",
+    title: "AirPods Max",
     description: "Up to 40% off",
-    image: "/images/side5.jpg",
-    price: "$41.62/mo.",
-  },
-  {
-    text: "Life Spirit",
-    title: "Laptop Max",
-    description: "Up to 40% off",
-    image: "/images/side6.jpg",
+    image: "/images/side4.jpg",
     price: "$41.62/mo.",
   },
 ];
 
 export const Specialproducts = [
-  {
-    discount: "-30%",
-    favorite: true,
-    brand: "Havells",
-    src: "/products/tab.webp",
-    description: "Samsung Galaxy Note10+ Mobile Phone; Sim...",
-    rating: "★★★★★",
-    currentPrice: "$60.00",
-    originalPrice: "$75.00",
-    daysLeft: "742 Days",
-    countdown: {
-      hours: "13",
-      minutes: "00",
-      seconds: "38",
-    },
-    productsLeft: 5,
-  },
   {
     discount: "-15%",
     favorite: false,
@@ -390,6 +459,23 @@ export const Specialproducts = [
     productsLeft: 6,
   },
   {
+    discount: "-20%",
+    favorite: true,
+    brand: "Apple",
+    src: "/products/mac.webp",
+    description: "Apple MacBook Pro 13-inch, 2020, 8GB RAM, 256GB SSD",
+    rating: "★★★★☆",
+    currentPrice: "$1200.00",
+    originalPrice: "$1500.00",
+    daysLeft: "200 Days",
+    countdown: {
+      hours: "09",
+      minutes: "30",
+      seconds: "45",
+    },
+    productsLeft: 8,
+  },
+  {
     discount: "-35%",
     favorite: false,
     brand: "Samsung",
@@ -405,5 +491,23 @@ export const Specialproducts = [
       seconds: "10",
     },
     productsLeft: 2,
+  },
+];
+
+export const PopularCategories = [
+  {
+    name: "Electronics",
+    src: "/products/pp1.webp",
+    active: true,
+  },
+  {
+    name: "Accessories",
+    src: "/products/pp2.webp",
+    active: false,
+  },
+  {
+    name: "Appliances",
+    src: "/products/pp3.webp",
+    active: false,
   },
 ];

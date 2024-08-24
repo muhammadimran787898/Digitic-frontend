@@ -31,9 +31,14 @@ import {
   sliderdata,
   swipersidedata,
   Specialproducts,
+  logoIMage,
+  PopularCategories,
 } from "./(components)/constants";
-import { Input } from "@/components/ui/input";
+
 import Blog from "../blog/page";
+import useCountdown from "@/hooks/useCountdownhook";
+import { HoverCardDemo } from "./(components)/dropdown";
+import ProductActions from "@/components/productdropdown";
 
 function classNameNames(...classNamees: any) {
   return classNamees.filter(Boolean).join(" ");
@@ -69,14 +74,24 @@ const servicesdata = [
 ];
 
 export default function home() {
+  const sp = useCountdown(56);
+
+  const pp = useCountdown(20);
+
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  const fpRef = useRef(null);
+  const frRef = useRef(null);
+
   return (
     <div className="">
-      <div className="grid grid-rows-1 p-7  ">
+      <div className="grid grid-rows-1 p-7 ">
         <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4 ">
-          <div className="relative rounded-xl w-full h-full">
+          <div className="relative rounded-xl w-full h-fit">
             <Swiper
               pagination={true}
-              className="mySwiper"
+              className="mySwiper "
               effect={"coverflow"}
               centeredSlides={false}
               loop={true}
@@ -104,7 +119,7 @@ export default function home() {
                 <SwiperSlide
                   key={index}
                   id={"swiper-custom" + index}
-                  className="relative  "
+                  className="relative text-black "
                 >
                   <div className="flex justify-center ">
                     <div className="h-full">
@@ -117,7 +132,7 @@ export default function home() {
                           className="rounded-xl object-cover"
                         />
 
-                        <div className="absolute top-10   left-2 flex flex-col justify-center  mx-4  space-y-3  ">
+                        <div className="absolute top-10  left-2 flex flex-col justify-center  mx-4  space-y-3  ">
                           <p className="text-md font-normal text-base text-orange-600">
                             {slide.text}
                           </p>
@@ -144,18 +159,21 @@ export default function home() {
               ))}
             </Swiper>
           </div>
-          <div className="w-full h-full grid grid-rows-1">
-            <div className="grid grid-cols-2  gap-1 relative ">
+
+          <div className="w-full h-fit grid grid-rows-1 ">
+            <div className="grid grid-cols-2  gap-4 relative  ">
               {swipersidedata.map((slide, index) => (
                 <>
-                  <div className="relative rounded-xl w-full h-full  ">
-                    <Image
-                      src={slide.image}
-                      alt="me"
-                      width="400"
-                      height="200"
-                      className="rounded-xl object-cover "
-                    />
+                  <div className="relative rounded-xl w-full h-auto    ">
+                    <div className=" overflow-hidden rounded-xl">
+                      <Image
+                        src={slide.image}
+                        alt="me"
+                        width="400"
+                        height="200"
+                        className="object-cover transition-transform duration-300 transform hover:scale-125 "
+                      />
+                    </div>
                     <div className="absolute top-10 left-2 flex flex-col justify-center  mx-4">
                       <p className="text-md font-normal text-base text-orange-600">
                         {slide.text}
@@ -218,7 +236,7 @@ export default function home() {
                     alt="me"
                     width="100"
                     height="100"
-                    className="flex w-12 h-10  object-cover"
+                    className="flex w-12 h-10  object-cover transition-transform duration-300 transform hover:scale-125"
                   />
                 </div>
               </>
@@ -227,40 +245,58 @@ export default function home() {
         </div>
         {/* </div> */}
         {/* ///////////fetured////////////// */}
-        <div className="grid grid-rows-1 gap-4 h-auto px-4 w-full mt-4 mb-10  ">
+
+        <div className="grid grid-rows-1 gap-4 h-auto px-4 w-full mt-4 mb-10">
           <div className="flex justify-between">
-            <p className="flex justify-start ml-4 items-start text-xl  font-semibold text-black">
+            <p className="flex justify-start ml-4 items-start text-xl font-semibold text-black">
               Featured Collection
             </p>
-            <div className="flex mx-2 ">
-              <Left className=" text-slate-500 w-6 h-6 " />
-              <Right className="  text-slate-500 w-6 h-6  " />
+            <div className="flex mx-2">
+              <div ref={fpRef} className="cursor-pointer">
+                <Left className="text-slate-500 w-6 h-6" />
+              </div>
+              <div ref={frRef} className="cursor-pointer">
+                <Right className="text-slate-500 w-6 h-6" />
+              </div>
             </div>
           </div>
 
-          <div className="w-full  overflow-hidden sm:px-4 ">
-            <div className="grid grid-cols-1 gap-4 sm:mx-0 md:grid-cols-3 lg:grid-cols-6">
+          <div className="w-full overflow-hidden sm:px-4">
+            {/* <div className="grid grid-cols-1 gap-4 sm:mx-0 md:grid-cols-3 lg:grid-cols-6"> */}
+
+            <Swiper
+              slidesPerView={6}
+              spaceBetween={30}
+              pagination={{ clickable: false }}
+              navigation={{
+                prevEl: fpRef.current,
+                nextEl: frRef.current,
+              }}
+              modules={[Navigation]}
+              className="mySwiper"
+            >
               {featuredCollection.map((product) => (
-                <div
+                <SwiperSlide
                   key={product.id}
-                  className="group relative  border border-gray-200  shadow-md shadow-gray-200 rounded-md bg-white sm:p-2"
+                  className="group relative border border-gray-200 shadow-md shadow-gray-200 w-full rounded-md bg-white sm:p-2"
                 >
-                  <div className="flex justify-between  ">
-                    <span className="bg-orange-400 text-black text-xs  w-10 h-4 font-xs px-1 rounded-full text-center">
+                  <div className="flex justify-between border-red-500">
+                    <div className="bg-orange-300 text-black text-xs w-10 h-4 font-xs px-1 rounded-full text-center">
                       -30%
-                    </span>
-                    <Heart className="w-4 h-4" />
+                    </div>
+
+                    <ProductActions />
                   </div>
-                  <div className="rounded-lg overflow-hidden bg-wite  group-hover:opacity-75">
+                  <div className="rounded-lg overflow-hidden bg-wite group-hover:opacity-75">
                     <Image
                       src={product.imageSrc}
                       alt={product.imageAlt}
                       width="100"
                       height="100"
-                      className="w-18 h-18 fle justify-center items-center mx-auto !bg-white object-contain"
+                      className="w-18 h-18 flex justify-center items-center mx-auto !bg-white object-contain transition-transform duration-300 transform hover:scale-125"
                     />
-                    <div className="pt-10 pb-4 px-2 flex flex-col justify-start space-y-2 ">
-                      <p className="font-medium text-sm text-orange-500">
+                    <div className="pt-10 pb-4 px-2 flex flex-col justify-start space-y-2">
+                      <p className="font-medium text-sm text-orange-300">
                         Sony
                       </p>
                       <h3 className="text-sm font-medium text-gray-900 line-clamp-1">
@@ -271,58 +307,52 @@ export default function home() {
                           {product.rating} out of 5 stars
                         </p>
                         <div className="flex flex-col items-start">
-                          {/* {[0, 1, 2, 3, 4].map((rating) => (
-                              <StarIcon
-                                key={rating}
-                                className={classNames(
-                                  product.rating > rating
-                                    ? "text-yellow-400"
-                                    : "text-gray-200",
-                                  "flex-shrink-0 h-5 w-5"
-                                )}
-                                aria-hidden="true"
-                              />
-                            ))} */}
-                          <p className=" text-sm font-semibold text-gray-900">
+                          <p className="text-sm font-semibold text-gray-900">
                             {product.price}.00
                           </p>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
+            {/* </div> */}
           </div>
         </div>
-
         {/* //////////////////////////////////////////////////// */}
 
         <div className="grid grid-rows-1 gap-4 h-auto px-4 w-full mt-10 mb-10  ">
           <div className="w-full overflow-hidden sm:px-4 ">
-            <div className="grid grid-cols-1 gap-4 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">
-              {Belowfeaturedproductdata.map((product) => (
+            <div className="grid grid-cols-1 gap-6 sm:mx-0 md:grid-cols-3 lg:grid-cols-4">
+              {Belowfeaturedproductdata.map((product, index) => (
                 <>
-                  <div className="group relative p-4 border border-gray-200  shadow-md shadow-gray-200 rounded-md bg-white hover:bg-black hover:text-white sm:p-6">
-                    <div className=" pb-4 flex flex-col justify-start space-y-2  ">
-                      <h3 className="text-sm font-light text-slate-500 line-clamp-1">
+                  <div
+                    className={`${
+                      index === 0
+                        ? "bg-black text-white "
+                        : "bg-white text-black"
+                    } group relative p-4 border border-gray-200  shadow-md shadow-gray-200 rounded-md  sm:p-6`}
+                  >
+                    <div className=" flex flex-col justify-start space-y-2  ">
+                      <h3 className="text-md font-semibold line-clamp-1">
                         {product.name}
                       </h3>
 
-                      <h1 className="text-lg font-semibold text-gray-900   line-clamp-1">
+                      <h1 className="text-2xl font-semibold  line-clamp-1">
                         {product.des}
                       </h1>
-                      <p className="text-sm font-light text-slate-500 line-clamp-2">
+                      <p className="text-sm font-light line-clamp-2">
                         {product.price}
                       </p>
                     </div>
-                    <div className="rounded-lg overflow-hidden bg-wite  group-hover:opacity-75">
+                    <div>
                       <Image
                         src={product.imageSrc}
                         alt={product.imageAlt}
-                        width="100"
-                        height="100"
-                        className="w-full h-full fle justify-center items-center mx-auto !bg-white object-contain"
+                        width="300"
+                        height="300"
+                        className="justify-center items-center mx-auto object-cover "
                       />
                     </div>
                   </div>
@@ -336,105 +366,114 @@ export default function home() {
 
         <div className="grid grid-rows-1 gap-4 h-auto px-4 w-full mt-10 mb-10  ">
           <div className="w-full overflow-hidden sm:px-4 ">
-            <div className="flex justify-between">
-              <p className="flex justify-start  items-start text-xl  font-semibold text-black">
-                Special Products
-              </p>
+            <div className="flex justify-between my-4">
+              <div>
+                <p className="flex justify-start items-start text-xl  font-semibold text-black">
+                  Special Products
+                </p>
+              </div>
               <div className="flex mx-2">
-                <Left className=" text-slate-500 w-6 h-6 " />
-                <Right className="  text-slate-500 w-6 h-6  " />
+                <div ref={prevRef} className="cursor-pointer">
+                  <Left className="text-slate-500 w-6 h-6" />
+                </div>
+                <div ref={nextRef} className="cursor-pointer">
+                  <Right className="text-slate-500 w-6 h-6" />
+                </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-4 my-4 md:grid-cols-3 lg:grid-cols-3">
-              {Specialproducts.map((product) => (
+            {/* <div className="grid grid-cols-1 gap-4 my-4 md:grid-cols-3 lg:grid-cols-3"> */}
+            <Swiper
+              slidesPerView={3}
+              spaceBetween={30}
+              pagination={{ clickable: false }}
+              navigation={{
+                prevEl: prevRef.current,
+                nextEl: nextRef.current,
+              }}
+              modules={[Navigation]}
+              className="mySwiper"
+            >
+              {Specialproducts.map((product, index) => (
                 <>
-                  <div className=" rounded-lg border bg-white shadow-md p-4">
-                    <div className="flex w-full justify-between   ">
-                      <span className="bg-orange-400 w-10 h-4 text-black text-xs font-xs px-1 rounded-full text-center">
-                        {product.discount}
-                      </span>
-                      <Heart className="w-4 h-4" />
-                    </div>
-                    <div className="flex justify-between  my-2">
-                      <div className="flex flex-col items-center">
-                        <Image
-                          src={product.src}
-                          alt="uuu"
-                          width="100"
-                          height="100"
-                          className="w-18 h-18  mx-auto  object-contain"
-                        />
-                        <div className="flex justify-center  my-4  items-center  ">
-                          <Image
-                            src={product.src}
-                            alt="uuu"
-                            width="100"
-                            height="100"
-                            className="w-10 h-10  border mx-4  object-contain"
-                          />
-                          <Image
-                            src={product.src}
-                            alt="uuu"
-                            width="100"
-                            height="100"
-                            className="w-10 h-10 border mx-4 object-contain"
-                          />
-                        </div>
-                        <div className="flex  ">
-                          <Left className=" text-slate-500 w-6 h-6 " />
-                          <Right className="  text-slate-500 w-6 h-6  " />
-                        </div>
+                  <SwiperSlide key={index}>
+                    <div className=" rounded-lg border bg-white shadow-md p-4">
+                      <div className="flex w-full justify-between   ">
+                        <span className="bg-orange-400 w-10 h-4 text-black text-xs font-xs px-1 rounded-full text-center">
+                          {product.discount}
+                        </span>
+                        <Heart className="w-4 h-4" />
                       </div>
 
-                      <div className="ml-4">
-                        <div className="text-xs text-gray-500">
-                          {product.brand}
+                      <div className="flex justify-between  my-2">
+                        <div className="flex flex-col  items-center">
+                          <Image
+                            src={product.src}
+                            alt="uuu"
+                            width="100"
+                            height="100"
+                            className=" mx-auto  object-contain"
+                          />
                         </div>
-                        <div className="font-semibold text-sm">
-                          {product.description}
-                        </div>
-                        <div className="flex items-center mt-1">
-                          <div className="text-yellow-400 text-sm">★★★★★</div>
-                        </div>
-                        <div className="mt-2 flex items-center">
-                          <span className="text-red-600 font-bold text-lg">
-                            {product.currentPrice}
-                          </span>
-                          <span className="text-gray-500 line-through ml-2">
-                            {product.originalPrice}
-                          </span>
-                        </div>
-                        <div className="flex items-center mt-2">
-                          <div className="text-gray-500 text-xs">742 Days</div>
-                          <div className="flex ml-2 items-center text-red-600 text-xs">
-                            <div className="bg-gray-100 rounded px-1">13</div>
-                            <div className="px-1">:</div>
-                            <div className="bg-gray-100 rounded px-1">00</div>
-                            <div className="px-1">:</div>
-                            <div className="bg-gray-100 rounded px-1">38</div>
+
+                        <div className="ml-4">
+                          <div className="text-xs text-gray-500">
+                            {product.brand}
                           </div>
-                        </div>
-                        <div className="text-gray-500 text-xs mt-2">
-                          {product.productsLeft}
-                        </div>
+                          <div className="font-semibold text-sm">
+                            {product.description}
+                          </div>
+                          <div className="flex items-center mt-1">
+                            <div className="text-yellow-400 text-sm">★★★★★</div>
+                          </div>
+                          <div className="mt-2 flex items-center">
+                            <span className="text-red-600 font-bold text-lg">
+                              {product.currentPrice}
+                            </span>
+                            <span className="text-gray-500 line-through ml-2">
+                              {product.originalPrice}
+                            </span>
+                          </div>
+                          <div className="flex items-center mt-2">
+                            <div className="text-gray-500 text-xs">
+                              742 Days
+                            </div>
+                            <div className="flex ml-2 items-center text-red-600 text-xs">
+                              <div className="bg-gray-100 rounded px-1">
+                                {sp.hours}
+                              </div>
+                              <div className="px-1">:</div>
+                              <div className="bg-gray-100 rounded px-1">
+                                {sp.minutes}
+                              </div>
+                              <div className="px-1">:</div>
+                              <div className="bg-gray-100 rounded px-1">
+                                {sp.seconds}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="text-gray-500 text-xs mt-2">
+                            {product.productsLeft}
+                          </div>
 
-                        <Progress value={10} className="w-full h-2" />
-                        <Button className="mt-4 w-auto px-4 bg-slate-800  text-white rounded-full py-1">
-                          OPTION
-                        </Button>
+                          <Progress value={10} className="w-full h-2" />
+                          <Button className="mt-4 w-auto px-4 bg-slate-800  text-white rounded-full py-1">
+                            OPTION
+                          </Button>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </SwiperSlide>
                 </>
               ))}
-            </div>
+            </Swiper>
+            {/* </div> */}
           </div>
         </div>
         {/* //////////////our popular  product//////// */}
 
         <div className="grid grid-rows-1 gap-4 h-auto px-4 w-full mt-10 mb-10  ">
           <div className="w-full overflow-hidden sm:px-4 ">
-            <div className="flex justify-between">
+            <div className="flex justify-between my-4">
               <p className="flex justify-start  items-start text-xl  font-semibold text-black">
                 Our Popular Products
               </p>
@@ -443,18 +482,120 @@ export default function home() {
                 <Right className="  text-slate-500 w-6 h-6  " />
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-4 my-4 sm:mx-0 md:grid-cols-3 lg:grid-cols-6">
+            <div className="grid  gap-4 grid-cols-[1fr_1fr_4fr] ">
+              <div className="bg-white rounded-lg gap-4 ">
+                {PopularCategories.map((category, index) => (
+                  <>
+                    <div
+                      className=" flex p-2  bg-white hover:bg-zinc-100 rounded-lg"
+                      key={index}
+                    >
+                      <Image
+                        src={category.src}
+                        alt="Samsung Galaxy Note10+"
+                        width="50"
+                        height="50"
+                        className="w-auto h-auto object-contain  "
+                      />
+                      <p className="font-semibold text-sm mt-4 ml-8 text-gray-500 hover:text">
+                        {category.name}
+                      </p>
+                    </div>
+                  </>
+                ))}
+              </div>
+              <div className="bg-red-500  rounded-lg">
+                <Image
+                  src="/products/ppp1.jpg"
+                  alt="Samsung Galaxy Note10+"
+                  width="600"
+                  height="1700"
+                  className="object-cover  rounded-lg "
+                />
+              </div>
+
+              <div className="overflow-hidden ">
+                {/* <div className="grid grid-cols-1 gap-4 sm:mx-0 md:grid-cols-3 lg:grid-cols-6"> */}
+
+                <Swiper
+                  slidesPerView={4}
+                  spaceBetween={15}
+                  pagination={{ clickable: false }}
+                  navigation={{
+                    prevEl: fpRef.current,
+                    nextEl: frRef.current,
+                  }}
+                  modules={[Navigation]}
+                  className="mySwiper"
+                >
+                  {featuredCollection.map((product) => (
+                    <SwiperSlide
+                      key={product.id}
+                      className="group relative border border-gray-200 shadow-md shadow-gray-200 w-full rounded-md bg-white sm:p-2"
+                    >
+                      <div className="flex justify-between border-red-500">
+                        <div className="bg-red-500 text-white text-xs w-auto h-fit font-xs  rounded-md p-1 ">
+                          Sold out
+                        </div>
+
+                        <ProductActions />
+                      </div>
+                      <div className="rounded-lg overflow-hidden bg-wite group-hover:opacity-75">
+                        <Image
+                          src={product.imageSrc}
+                          alt={product.imageAlt}
+                          width="100"
+                          height="100"
+                          className=" flex justify-center items-center mx-auto !bg-white object-contain transition-transform duration-300 transform hover:scale-125"
+                        />
+                        <div className="pt-10 pb-4 px-2 flex flex-col justify-start space-y-1">
+                          <p className="font-medium text-sm text-orange-400">
+                            Sony
+                          </p>
+                          <div className="flex items-center mt-1">
+                            <div className="text-yellow-400 text-sm">★★★★★</div>
+                          </div>
+                          <h3 className="text-sm font-medium text-gray-900 line-clamp-1">
+                            {product.name}
+                          </h3>
+                          <div className="mt-1 flex flex-col items-start">
+                            <p className="sr-only">
+                              {product.rating} out of 5 stars
+                            </p>
+                            <div className="flex flex-col items-start">
+                              <p className="text-sm font-semibold text-gray-900">
+                                {product.price}.00
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+                {/* </div> */}
+              </div>
+            </div>
+
+            {/* <div className="flex ">
+              <div className="flex flex-col rounded-lg"></div>
+            </div> */}
+
+            {/* <div className="grid grid-cols-1 gap-4 my-4 sm:mx-0 md:grid-cols-4 lg:grid-cols-6">
               <div className="bg-white rounded-lg shadow-md p-4 max-w-sm">
-                <div className="relative">
-                  <div className="absolute top-2 left-2 bg-yellow-500 text-white text-xs rounded-full px-2 py-1">
-                    -20%
+                <div className="flex justify-between  border-red-500 ">
+                  <div className="bg-orange-400 text-black text-xs  w-10 h-4 font-xs px-1 rounded-full text-center">
+                    -30%
                   </div>
-                  <img
-                    src="path/to/your/image.png"
-                    alt="Samsung Galaxy Note10+"
-                    className="w-full rounded-t-lg"
-                  />
+                  <Heart className="w-4 h-4" />
                 </div>
+                <Image
+                  src="/products/came.webp"
+                  alt="Samsung Galaxy Note10+"
+                  className="w-full rounded-t-lg"
+                  width="100"
+                  height="100"
+                />
                 <div className="mt-4">
                   <div className="text-xs text-gray-500">Havells</div>
                   <div className="font-semibold text-sm">
@@ -474,11 +615,15 @@ export default function home() {
                   <div className="flex items-center mt-2">
                     <div className="text-gray-500 text-xs">742 Days</div>
                     <div className="flex ml-2 items-center text-red-600 text-xs">
-                      <div className="bg-gray-100 rounded px-1">13</div>
+                      <div className="bg-gray-100 rounded px-1">{pp.hours}</div>
                       <div className="px-1">:</div>
-                      <div className="bg-gray-100 rounded px-1">00</div>
+                      <div className="bg-gray-100 rounded px-1">
+                        {pp.minutes}
+                      </div>
                       <div className="px-1">:</div>
-                      <div className="bg-gray-100 rounded px-1">38</div>
+                      <div className="bg-gray-100 rounded px-1">
+                        {pp.seconds}
+                      </div>
                     </div>
                   </div>
                   <div className="text-gray-500 text-xs mt-2">Products: 5</div>
@@ -488,49 +633,25 @@ export default function home() {
                   </button>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         {/* ////////////////////////////logosection///////////////////////// */}
         <div className="grid grid-rows-1 gap-4 px-4   mx-8  rounded-md  py-8  bg-white  ">
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-6 lg:grid-cols-5  ">
-            <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-              <Image
-                height={100}
-                width={100}
-                className="h-12"
-                src="https://tailwindui.com/img/logos/tuple-logo-gray-400.svg"
-                alt="Tuple"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-              <img
-                className="h-12"
-                src="https://tailwindui.com/img/logos/mirage-logo-gray-400.svg"
-                alt="Mirage"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-              <img
-                className="h-12"
-                src="https://tailwindui.com/img/logos/statickit-logo-gray-400.svg"
-                alt="StaticKit"
-              />
-            </div>
-            <div className="col-span-1 flex justify-center md:col-span-3 lg:col-span-1">
-              <img
-                className="h-12"
-                src="https://tailwindui.com/img/logos/transistor-logo-gray-400.svg"
-                alt="Transistor"
-              />
-            </div>
-            <div className="col-span-2 flex justify-center md:col-span-3 lg:col-span-1">
-              <img
-                className="h-12"
-                src="https://tailwindui.com/img/logos/workcation-logo-gray-400.svg"
-                alt="Workcation"
-              />
-            </div>
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-7  ">
+            {logoIMage.map((item: any, index: any) => (
+              <>
+                <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
+                  <Image
+                    height="100"
+                    width="100"
+                    src={item.imagesrc}
+                    className="w-24 h-24"
+                    alt="Tuple"
+                  />
+                </div>
+              </>
+            ))}
           </div>
         </div>
         {/* /////////////////////////////////////blo................///////////////////////// */}

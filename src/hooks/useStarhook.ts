@@ -1,28 +1,47 @@
-import { useState } from "react";
+// "use clients";
+// import { useState } from "react";
 
-const useStarRating = (initialRating = 0) => {
-  const [rating, setRating] = useState(initialRating);
-  const [hoverRating, setHoverRating] = useState(0);
+// type Rating = number | null;
 
-  const handleMouseEnter = (rate: any) => {
-    setHoverRating(rate);
-  };
+// interface StarRatingProps {
+//   initialRating?: Rating;
+//   maxRating?: number;
+// }
 
-  const handleMouseLeave = () => {
-    setHoverRating(0);
-  };
+// const useStarRating = ({
+//   initialRating = null,
+//   maxRating = 5,
+// }: StarRatingProps) => {
+//   const [rating, setRating] = useState<Rating>(initialRating);
+//   const [hover, setHover] = useState<Rating>(null);
 
-  const handleClick = (rate: any) => {
-    setRating(rate);
-  };
+//   const handleMouseEnter = (newRating: Rating) => {
+//     setHover(newRating);
+//   };
 
-  return {
-    rating,
-    hoverRating,
-    handleMouseEnter,
-    handleMouseLeave,
-    handleClick,
-  };
-};
+//   const getStarIcon = (currentRating: number): JSX.Element => {
+//     return (
 
-export default useStarRating;
+//         <span
+//           className={`${hover ? "#ffc107" : "#e4e5e9"} "cursor-pointer"`}
+//           onMouseEnter={() => handleMouseEnter(currentRating)}
+//           onMouseLeave={handleMouseLeave}
+//         >
+//           &#9733
+//         </span>
+//       </>
+//     );
+//   };
+
+//   return {
+//     rating,
+//     hover,
+//     onmouseenter,
+//     onmouseleave,
+//     handleClick,
+//     getStarIcon,
+//     maxRating,
+//   };
+// };
+
+// export default useStarRating;

@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import { Circle } from "@/src/assets/svg";
 
 import { cn } from "@/lib/utils";
+import { Circle } from "@/assets/svg";
 
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,

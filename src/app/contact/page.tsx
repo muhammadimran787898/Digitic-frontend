@@ -6,6 +6,18 @@ export default function Contact() {
   return (
     <div>
       <div className="bg-white">
+        <div className="">
+          <div className="google-map-code">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7239212.580070692!2d66.95291269999999!3d30.3753215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x393eb2a1441f4b0d%3A0x6f2b57e4c0bda74c!2sPakistan!5e0!3m2!1sen!2s!4v1690902825377!5m2!1sen!2s"
+              width="1220"
+              height="500"
+              className="flex justify-center mx-auto mt-10"
+              aria-hidden="false"
+            ></iframe>
+          </div>
+        </div>
+
         <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
           <div className="relative bg-white shadow-xl">
             <h2 className="sr-only">Contact us</h2>
