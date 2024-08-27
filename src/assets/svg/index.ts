@@ -19,3 +19,7 @@ export { default as Scroll } from "../svg/home/scroll.svg";
 export { default as Star } from "../svg/cart/star.svg";
 export { default as Circle } from "../svg/circle.svg";
 export { default as Check } from "../svg/check.svg";
+export { default as Three } from "../svg/store/three.svg";
+export { default as Two } from "../svg/store/two.svg";
+export { default as Threev } from "../svg/store/threev.svg";
+export { default as Four } from "../svg/store/four.svg";

@@ -2,9 +2,9 @@
 
 import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { Check, ChevronRight, Circle } from "@/src/assets/svg";
 
 import { cn } from "@/lib/utils";
+import { Check, Chevron, Circle } from "@/assets/svg";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
@@ -34,7 +34,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRight className="ml-auto h-4 w-4" />
+    <Chevron className="ml-auto h-4 w-4" />
   </DropdownMenuPrimitive.SubTrigger>
 ));
 DropdownMenuSubTrigger.displayName =

@@ -1,786 +1,292 @@
+import { Checkbox } from "@/components/ui/checkbox";
+import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 import React from "react";
+import { Four, Left, Right, Three, Threev, Two } from "@/assets/svg";
+import ProductActions from "@/components/productdropdown";
+import { featuredCollection } from "@/app/home/(components)/constants";
 
 export default function Main() {
-  return (
-    <div>
-      <div className="bg-white">
-        <div className="">
-          <div
-            className="relative z-40 lg:hidden"
-            role="dialog"
-            aria-modal="true"
-          >
-            <div
-              className="fixed inset-0 bg-black bg-opacity-25"
-              aria-hidden="true"
-            ></div>
+  const ProductColor = [
+    { name: "Red", hex: "bg-[#FF0000]" },
+    { name: "Blue", hex: "bg-[#0000FF]" },
+    { name: "Green", hex: "bg-[#008000]" },
+    { name: "Yellow", hex: "bg-[#FFFF00]" },
+    { name: "Black", hex: "bg-[#000000]" },
+    { name: "White", hex: "bg-[#FFFFFF]" },
+    { name: "Orange", hex: "bg-[#FFA500]" },
+    { name: "Purple", hex: "bg-[#800080]" },
+    { name: "Pink", hex: "bg-[#FFC0CB]" },
+    { name: "Brown", hex: "bg-[#A52A2A]" },
+    { name: "Gray", hex: "bg-[#808080]" },
+    { name: "Cyan", hex: "bg-[#00FFFF]" },
+  ];
 
-            <div className="fixed inset-0 z-40 flex">
-              <div className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
-                <div className="flex items-center justify-between px-4">
-                  <h2 className="text-lg font-medium text-gray-900">Filters</h2>
-                  <button
-                    type="button"
-                    className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
+  const Products = [
+    {
+      title: "Smart TV",
+      link: "https://example.com/smart-tv",
+    },
+    {
+      title: "Camera",
+      link: "https://example.com/digital-camera",
+    },
+    {
+      title: "Laptop",
+      link: "https://example.com/laptop",
+    },
+
+    {
+      title: "Gaming Laptop",
+      link: "https://example.com/gaming-laptop",
+    },
+  ];
+
+  return (
+    <div className="bg-zinc-100 overflow-y-auto  py-20 ">
+      <main className="mx-auto max-w-7xl h-full px-4 sm:px-6 lg:px-8 ">
+        <div className="flex  gap-4">
+          <div className="grid grid-cols-1 gap-4 w-1/4  ">
+            <div className="grid grid-cols-1 bg-white gap-y-3  rounded-lg sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 py-2 px-4 ">
+              <p className="font-bold txet-black">Shop BY Categories</p>
+              <div>
+                {Products.map((item, index) => (
+                  <div
+                    key={index}
+                    className="text-sm text-slate-500  hover:text-orange-300 font-normal py-1  "
                   >
-                    <span className="sr-only">Close menu</span>
-                    <svg
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
+                    {item.title}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="grid grid-cols-1 bg-white gap-y-3   rounded-lg sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 py-2  px-4 ">
+              <p className="font-bold txet-black">Filter By</p>
+              <p className="font-semibold text-base txet-black -pt-4">
+                Availability
+              </p>
+
+              <div className="  flex flex-col gap-4 pb-2 ">
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="terms" />
+                  <label
+                    htmlFor="terms"
+                    className="text-sm font-normal leading-none  text-slate-500  peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    In stock
+                  </label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="terms" />
+                  <label
+                    htmlFor="terms"
+                    className="text-sm font-normal leading-none text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    Out of stock
+                  </label>
+                </div>
+                <div className="">
+                  <p className="font-semibold text-base txet-black">Price</p>
+                  <div className="flex gap-2 !text-black mt-2">
+                    <Input
+                      variant="default"
+                      className=" !text-black border-black"
+                      placeholder="From"
+                    />
+                    <Input
+                      variant="default"
+                      className="!text-black border-black"
+                      placeholder="To"
+                    />
+                  </div>
                 </div>
 
-                <form className="mt-4 border-t border-gray-200">
-                  <h3 className="sr-only">Categories</h3>
-                  <ul
-                    role="list"
-                    className="px-2 py-3 font-medium text-gray-900"
-                  >
-                    <li>
-                      <a href="#" className="block px-2 py-3">
-                        Totes
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="block px-2 py-3">
-                        Backpacks
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="block px-2 py-3">
-                        Travel Bags
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="block px-2 py-3">
-                        Hip Bags
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#" className="block px-2 py-3">
-                        Laptop Sleeves
-                      </a>
-                    </li>
-                  </ul>
-
-                  <div className="border-t border-gray-200 px-4 py-6">
-                    <h3 className="-mx-2 -my-3 flow-root">
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500"
-                        aria-controls="filter-section-mobile-0"
-                        aria-expanded="false"
-                      >
-                        <span className="font-medium text-gray-900">Color</span>
-                        <span className="ml-6 flex items-center">
-                          ow/hide based on se
-                          <svg
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                          </svg>
-                          <svg
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </h3>
-                    <div className="pt-6" id="filter-section-mobile-0">
-                      <div className="space-y-6">
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-color-0"
-                            name="color[]"
-                            value="white"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-color-0"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            White
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-color-1"
-                            name="color[]"
-                            value="beige"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-color-1"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            Beige
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-color-2"
-                            name="color[]"
-                            value="blue"
-                            type="checkbox"
-                            checked
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-color-2"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            Blue
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-color-3"
-                            name="color[]"
-                            value="brown"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-color-3"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            Brown
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-color-4"
-                            name="color[]"
-                            value="green"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-color-4"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            Green
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-color-5"
-                            name="color[]"
-                            value="purple"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-color-5"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            Purple
-                          </label>
-                        </div>
-                      </div>
-                    </div>
+                <div className="">
+                  <p className="font-semibold text-base txet-black">Colors</p>
+                  <div className="flex flex-wrap p-1 mt-2">
+                    {ProductColor.map((i, index) => (
+                      <div
+                        key={index}
+                        className={`rounded-full w-4 h-4 m-1  border border-slate-500 ${i.hex}`}
+                      ></div>
+                    ))}
                   </div>
-                  <div className="border-t border-gray-200 px-4 py-6">
-                    <h3 className="-mx-2 -my-3 flow-root">
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500"
-                        aria-controls="filter-section-mobile-1"
-                        aria-expanded="false"
-                      >
-                        <span className="font-medium text-gray-900">
-                          Category
-                        </span>
-                        <span className="ml-6 flex items-center">
-                          ow/hide based on se
-                          <svg
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                          </svg>
-                          show/hide based on se
-                          <svg
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </h3>
-                    show/hide based
-                    <div className="pt-6" id="filter-section-mobile-1">
-                      <div className="space-y-6">
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-category-0"
-                            name="category[]"
-                            value="new-arrivals"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-category-0"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            New Arrivals
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-category-1"
-                            name="category[]"
-                            value="sale"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-category-1"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            Sale
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-category-2"
-                            name="category[]"
-                            value="travel"
-                            type="checkbox"
-                            checked
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-category-2"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            Travel
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-category-3"
-                            name="category[]"
-                            value="organization"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-category-3"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            Organization
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-category-4"
-                            name="category[]"
-                            value="accessories"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-category-4"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            Accessories
-                          </label>
-                        </div>
-                      </div>
-                    </div>
+                </div>
+                <div className="size gap-2 space-y-2">
+                  <p className="font-semibold text-base txet-black">Sizes</p>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="terms" />
+                    <label
+                      htmlFor="terms"
+                      className="text-sm font-normal leading-none  text-slate-500  peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      S
+                    </label>
                   </div>
-                  <div className="border-t border-gray-200 px-4 py-6">
-                    <h3 className="-mx-2 -my-3 flow-root">
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500"
-                        aria-controls="filter-section-mobile-2"
-                        aria-expanded="false"
-                      >
-                        <span className="font-medium text-gray-900">Size</span>
-                        <span className="ml-6 flex items-center">
-                          ow/hide based on se
-                          <svg
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                          </svg>
-                          show/hide based on se
-                          <svg
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </h3>
-                    show/hide based
-                    <div className="pt-6" id="filter-section-mobile-2">
-                      <div className="space-y-6">
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-size-0"
-                            name="size[]"
-                            value="2l"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-size-0"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            2L
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-size-1"
-                            name="size[]"
-                            value="6l"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-size-1"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            6L
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-size-2"
-                            name="size[]"
-                            value="12l"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-size-2"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            12L
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-size-3"
-                            name="size[]"
-                            value="18l"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-size-3"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            18L
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-size-4"
-                            name="size[]"
-                            value="20l"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-size-4"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            20L
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-mobile-size-5"
-                            name="size[]"
-                            value="40l"
-                            type="checkbox"
-                            checked
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-mobile-size-5"
-                            className="ml-3 min-w-0 flex-1 text-gray-500"
-                          >
-                            40L
-                          </label>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="terms" />
+                    <label
+                      htmlFor="terms"
+                      className="text-sm font-normal leading-none  text-slate-500  peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      M
+                    </label>
+                  </div>{" "}
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="terms" />
+                    <label
+                      htmlFor="terms"
+                      className="text-sm font-normal leading-none  text-slate-500  peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Lg
+                    </label>
+                  </div>{" "}
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="terms" />
+                    <label
+                      htmlFor="terms"
+                      className="text-sm font-normal leading-none  text-slate-500  peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      Xl
+                    </label>
+                  </div>{" "}
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="terms" />
+                    <label
+                      htmlFor="terms"
+                      className="text-sm font-normal leading-none  text-slate-500  peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      XXL
+                    </label>
                   </div>
-                </form>
+                </div>
               </div>
+            </div>
+            <div className="grid grid-cols-1 bg-white gap-y-3  rounded-lg sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 py-2 px-4 ">
+              <p className="font-bold txet-black">Product Tags</p>
+              <div className="">fghjkl</div>
+              <div className="">fghjkl</div>
+              <div className="">fghjkl</div>
+              <div className="">fghjkl</div>
+            </div>
+            <div className="grid grid-cols-1 bg-white gap-y-3  rounded-lg sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-1 py-2 px-4 ">
+              <p className="font-bold txet-black">Random Product </p>
+              <div className="">fghjkl</div>
+              <div className="">fghjkl</div>
+              <div className="">fghjkl</div>
+              <div className="">fghjkl</div>
             </div>
           </div>
-
-          <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
-              <div className="flex items-center">
-                <div className="relative inline-block text-left">
-                  <div>
-                    <button
-                      type="button"
-                      className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
-                      id="menu-button"
-                      aria-expanded="false"
-                      aria-haspopup="true"
-                    >
-                      Sort
-                      <svg
-                        className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-
-                  <div
-                    className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
-                    role="menu"
-                    aria-orientation="vertical"
-                    aria-labelledby="menu-button"
-                  >
-                    <div className="py-1" role="none">
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm font-medium text-gray-900"
-                        role="menuitem"
-                        id="menu-item-0"
-                      >
-                        Most Popular
-                      </a>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-500"
-                        role="menuitem"
-                        id="menu-item-1"
-                      >
-                        Best Rating
-                      </a>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-500"
-                        role="menuitem"
-                        id="menu-item-2"
-                      >
-                        Newest
-                      </a>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-500"
-                        role="menuitem"
-                        id="menu-item-3"
-                      >
-                        Price: Low to High
-                      </a>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-500"
-                        role="menuitem"
-                        id="menu-item-4"
-                      >
-                        Price: High to Low
-                      </a>
-                    </div>
-                  </div>
+          {/* <div className="grid grid-cols-auto w-full "> */}
+          <div className="grid grid-rows-2 w-full h-28 ">
+            <div className="flex justify-between px-1 bg-white  rounded-md items-center">
+              <div className="flex">
+                <div className="w-full">
+                  <p className="text-sm font-medium mt-2 text-slate-700 mx-1">
+                    Sort By:
+                  </p>
                 </div>
-
-                <button
-                  type="button"
-                  className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
-                >
-                  <span className="sr-only">View grid</span>
-                  <svg
-                    className="h-5 w-5"
-                    aria-hidden="true"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M4.25 2A2.25 2.25 0 002 4.25v2.5A2.25 2.25 0 004.25 9h2.5A2.25 2.25 0 009 6.75v-2.5A2.25 2.25 0 006.75 2h-2.5zm0 9A2.25 2.25 0 002 13.25v2.5A2.25 2.25 0 004.25 18h2.5A2.25 2.25 0 009 15.75v-2.5A2.25 2.25 0 006.75 11h-2.5zm9-9A2.25 2.25 0 0011 4.25v2.5A2.25 2.25 0 0013.25 9h2.5A2.25 2.25 0 0018 6.75v-2.5A2.25 2.25 0 0015.75 2h-2.5zm0 9A2.25 2.25 0 0011 13.25v2.5A2.25 2.25 0 0013.25 18h2.5A2.25 2.25 0 0018 15.75v-2.5A2.25 2.25 0 0015.75 11h-2.5z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
-                >
-                  <span className="sr-only">Filters</span>
-                  <svg
-                    className="h-5 w-5"
-                    aria-hidden="true"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M2.628 1.601C5.028 1.206 7.49 1 10 1s4.973.206 7.372.601a.75.75 0 01.628.74v2.288a2.25 2.25 0 01-.659 1.59l-4.682 4.683a2.25 2.25 0 00-.659 1.59v3.037c0 .684-.31 1.33-.844 1.757l-1.937 1.55A.75.75 0 018 18.25v-5.757a2.25 2.25 0 00-.659-1.591L2.659 6.22A2.25 2.25 0 012 4.629V2.34a.75.75 0 01.628-.74z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>
-                </button>
+                <div>
+                  <Select>
+                    <SelectTrigger className="w-44 mt-1 border border-slate-300 rounded-md ">
+                      <SelectValue placeholder="Best Selling" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        {/* <SelectLabel>Best Selling</SelectLabel> */}
+                        {[1, 2, 3, 4].map((language, index) => (
+                          <SelectItem
+                            key={index}
+                            value={language}
+                            className="hover:bg-orange-300 "
+                          >
+                            {language}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <div className="text-sm font-medium text-slate-700 ">
+                  21 Product
+                </div>
+                <Four className="w-6 h-6 bg-zinc-100  rounded-md p-1" />
+                <Three className="w-6 h-6 bg-zinc-100  rounded-md p-1" />
+                <Two className="w-6 h-6 bg-zinc-100 !rotate-180  rounded-md p-1" />
+                <Threev className="w-6 h-6 bg-zinc-100 text-black !rotate-180  rounded-md p-1" />
               </div>
             </div>
 
-            <section aria-labelledby="products-heading" className="pb-24 pt-6">
-              <h2 id="products-heading" className="sr-only">
-                Products
-              </h2>
+            {/* </div> */}
 
-              <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-                <form className="hidden lg:block">
-                  <h3 className="sr-only text-black">Shop by Categories</h3>
-                  <ul
-                    role="list"
-                    className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-                  >
-                    <li>
-                      <a href="#">Totes</a>
-                    </li>
-                    <li>
-                      <a href="#">Backpacks</a>
-                    </li>
-                    <li>
-                      <a href="#">Travel Bags</a>
-                    </li>
-                    <li>
-                      <a href="#">Hip Bags</a>
-                    </li>
-                    <li>
-                      <a href="#">Laptop Sleeves</a>
-                    </li>
-                  </ul>
+            <div className="grid grid-cols-1 gap-4 w-full h-[1000px] sm:mx-0 md:grid-cols-3 lg:grid-cols-4 my-4 overflow-y-auto">
+              {featuredCollection.map((product) => (
+                <div
+                  key={product.id}
+                  className="group relative border border-gray-200 shadow-md shadow-gray-200  rounded-md bg-white sm:p-2"
+                >
+                  <div className="flex justify-between border-red-500">
+                    <div className="bg-orange-300 text-black text-xs w-10 h-4 font-xs px-1 rounded-full text-center">
+                      -30%
+                    </div>
 
-                  <div className="border-b border-gray-200 py-6">
-                    <h3 className="-my-3 flow-root">
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500"
-                        aria-controls="filter-section-0"
-                        aria-expanded="false"
-                      >
-                        <span className="font-medium text-gray-900">Color</span>
-                        <span className="ml-6 flex items-center">
-                          ow/hide based on se
-                          <svg
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                          </svg>
-                          <svg
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </h3>
-
-                    <div className="pt-6" id="filter-section-0">
-                      <div className="space-y-4">
-                        <div className="flex items-center">
-                          <input
-                            id="filter-color-0"
-                            name="color[]"
-                            value="white"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-color-0"
-                            className="ml-3 text-sm text-gray-600"
-                          >
-                            White
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-color-1"
-                            name="color[]"
-                            value="beige"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-color-1"
-                            className="ml-3 text-sm text-gray-600"
-                          >
-                            Beige
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-color-2"
-                            name="color[]"
-                            value="blue"
-                            type="checkbox"
-                            checked
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-color-2"
-                            className="ml-3 text-sm text-gray-600"
-                          >
-                            Blue
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-color-3"
-                            name="color[]"
-                            value="brown"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-color-3"
-                            className="ml-3 text-sm text-gray-600"
-                          >
-                            Brown
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-color-4"
-                            name="color[]"
-                            value="green"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-color-4"
-                            className="ml-3 text-sm text-gray-600"
-                          >
-                            Green
-                          </label>
-                        </div>
-                        <div className="flex items-center">
-                          <input
-                            id="filter-color-5"
-                            name="color[]"
-                            value="purple"
-                            type="checkbox"
-                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                          />
-                          <label
-                            htmlFor="filter-color-5"
-                            className="ml-3 text-sm text-gray-600"
-                          >
-                            Purple
-                          </label>
+                    <ProductActions />
+                  </div>
+                  <div className="rounded-lg overflow-hidden bg-wite group-hover:opacity-75">
+                    <Image
+                      src={product.imageSrc}
+                      alt={product.imageAlt}
+                      width="100"
+                      height="100"
+                      className="w-18 h-18 flex justify-center items-center mx-auto !bg-white object-contain transition-transform duration-300 transform hover:scale-125"
+                    />
+                    <div className="pt-10 pb-4 px-2 flex flex-col justify-start space-y-2">
+                      <p className="font-medium text-sm text-orange-300">
+                        Sony
+                      </p>
+                      <h3 className="text-sm font-medium text-gray-900 line-clamp-1">
+                        {product.name}
+                      </h3>
+                      <div className="mt-1 flex flex-col items-start">
+                        <p className="sr-only">
+                          {product.rating} out of 5 stars
+                        </p>
+                        <div className="flex flex-col items-start">
+                          <p className="text-sm font-semibold text-gray-900">
+                            {product.price}.00
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="border-b border-gray-200 py-6">
-                    <h3 className="-my-3 flow-root">
-                      <button
-                        type="button"
-                        className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500"
-                        aria-controls="filter-section-1"
-                        aria-expanded="false"
-                      >
-                        <span className="font-medium text-gray-900">
-                          Category
-                        </span>
-                        <span className="ml-6 flex items-center">
-                          <svg
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                          </svg>
+                </div>
+              ))}
+            </div>
 
-                          <svg
-                            className="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M4 10a.75.75 0 01.75-.75h10.5a.75.75 0 010 1.5H4.75A.75.75 0 014 10z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </span>
-                      </button>
-                    </h3>
-                  </div>
-                </form>
-              </div>
-            </section>
-          </main>
+            {/* <div className="grid grid-cols-3  h-full w-full ">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                // eslint-disable-next-line react/jsx-key
+                <div className="align-middle items-center my-4 mx-4">{i}</div>
+              ))}
+            </div> */}
+          </div>
+          {/* </div> */}
         </div>
-      </div>
+      </main>
     </div>
   );
 }

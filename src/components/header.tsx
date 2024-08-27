@@ -176,7 +176,11 @@ export default function Header() {
                     <SelectGroup>
                       <SelectLabel>Lnaguage</SelectLabel>
                       {languages.map((language) => (
-                        <SelectItem key={language} value={language}>
+                        <SelectItem
+                          key={language}
+                          value={language}
+                          className="hover:bg-orange-300 "
+                        >
                           {language}
                         </SelectItem>
                       ))}
@@ -192,7 +196,11 @@ export default function Header() {
                     <SelectGroup>
                       <SelectLabel>Currency</SelectLabel>
                       {currencies.map((language) => (
-                        <SelectItem key={language} value={language}>
+                        <SelectItem
+                          key={language}
+                          value={language}
+                          className="hover:bg-orange-300 "
+                        >
                           {language}
                         </SelectItem>
                       ))}

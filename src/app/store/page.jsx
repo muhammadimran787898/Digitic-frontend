@@ -10,10 +10,7 @@ import Main from "./(components)/main";
 export default function CustomAccordion() {
   return (
     <>
-      <div className="bg-white">
-        <Main />
-      </div>
-      ;
+      <Main />
     </>
   );
   // const items = [

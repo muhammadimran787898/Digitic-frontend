@@ -34,7 +34,7 @@ export default function ScrollToTop() {
     <div className="scroll-to-top">
       {isVisible && (
         <div onClick={scrollToTop} className="w-4 h-4 rounded-full ">
-          <h3 className="fixed bottom-6 right-4 rounded-full bg-orange-500">
+          <h3 className="fixed bottom-6 right-4 rounded-full bg-orange-400">
             <Scroll />
           </h3>
         </div>
