@@ -51,8 +51,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { Button } from "@/components/ui/button";
-
 const list = [
   {
     title: "Favorite",
@@ -145,6 +143,105 @@ const currencies = [
   "Swedish Krona",
   "New Zealand Dollar",
 ];
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
+
+const mainItems = [
+  { title: "TV" },
+  { title: "Camera" },
+  {
+    title: "Laptop",
+    subItems: ["Gaming Laptop", "Business Laptop", "Ultrabook"],
+  },
+  {
+    title: "Mobile",
+    subItems: ["Smartphones", "Feature Phones", "Accessories"],
+  },
+  {
+    title: "Watches",
+    subItems: ["Smart Watches", "Analog Watches", "Digital Watches"],
+  },
+  { title: "New Arrivals" },
+  { title: "Offers" },
+  { title: "Support" },
+];
+
+const accessoryItems = [
+  { title: "Headphones" },
+  { title: "Chargers" },
+  { title: "More..." },
+];
+function DropdownMenuDemo() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">Shop Categories</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel>Electronics</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          {mainItems.slice(0, 2).map((item, index) => (
+            <DropdownMenuItem key={index}>
+              <span>{item.title}</span>
+            </DropdownMenuItem>
+          ))}
+          {mainItems.slice(2, 5).map((item, index) => (
+            <DropdownMenuSub key={index}>
+              <DropdownMenuSubTrigger>
+                <span>{item.title}</span>
+              </DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {item.subItems?.map((subItem, subIndex) => (
+                    <DropdownMenuItem key={subIndex}>
+                      <span>{subItem}</span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+          ))}
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <span>Accessories</span>
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                {accessoryItems.map((item, index) => (
+                  <DropdownMenuItem key={index}>
+                    <span>{item.title}</span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+          {mainItems.slice(5).map((item, index) => (
+            <DropdownMenuItem key={index}>
+              <span>{item.title}</span>
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 export default function Header() {
   return (
@@ -338,38 +435,7 @@ export default function Header() {
         <div className="flex pt-2 sm:px-6 lg:px-8 ">
           <div className="flex">
             <Category className="w-4 h-4 text-white mt-1" />
-
-            <NavigationMenu className="-mt-2 text-white">
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-white bg-transparent hover:bg-transparent">
-                    Shop Categories
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                      <li className="row-span-3">
-                        <NavigationMenuLink asChild>
-                          <a
-                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                            href="/"
-                          >
-                            <div className="mb-2 mt-4 text-lg font-medium">
-                              shadcn/ui
-                            </div>
-                            <p className="text-sm leading-tight text-muted-foreground">
-                              Beautifully designed components that you can copy
-                              and paste into your apps. Accessible.
-                              Customizable. Open Source.
-                            </p>
-                          </a>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-            {/* <div className="border-l-2 h-4 mt-1 border-slate-600"></div> */}
+            <DropdownMenuDemo />
             <Separator
               orientation="vertical"
               className="w-[1px] h-5 mt-1  bg-slate-400"

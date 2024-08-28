@@ -2,6 +2,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 import {
   Select,
@@ -224,6 +230,7 @@ export default function Main() {
                 <div className="text-sm font-medium text-slate-700 ">
                   21 Product
                 </div>
+
                 <Four className="w-6 h-6 bg-zinc-100  rounded-md p-1" />
                 <Three className="w-6 h-6 bg-zinc-100  rounded-md p-1" />
                 <Two className="w-6 h-6 bg-zinc-100 !rotate-180  rounded-md p-1" />
